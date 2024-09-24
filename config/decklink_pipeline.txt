@@ -1,1 +1,10 @@
-decklinkvideosrc device-number=$CAMERA_NUMBER$ mode=25 ! videoconvert ! videocrop bottom=16 ! video/x-raw,format=BGR ! queue ! appsink max-buffers=1 drop=True
+decklinkvideosrc device-number=$CAMERA_NUMBER$ mode=25 !
+videoconvert ! 
+videorate ! video/x-raw,framerate=60/1 ! 
+videocrop bottom=16 ! 
+video/x-raw,format=BGR !
+queue max-size-buffers=5 ! 
+appsink max-buffers=5 drop=True sync=False
+
+
+
